@@ -79,34 +79,41 @@ class pluginPostsbymonths extends Plugin {
 		$numberOfItems = $this->getValue('numberOfItems');
 		$publishedPages = $pages->getList($pageNumber, $numberOfItems, $onlyPublished);
 
-		$previousValue = date('Y')+1;
+		$previousValueY = null;
+		$previousValueM = null;
 
 		foreach ($publishedPages as $pageKey) {
 
-		$page = new Page($pageKey);
-		$date = explode(" ", $page->date());
-		$year = $date[2];
+			$page = new Page($pageKey);
+			$date = explode(" ", $page->date());
+			$year = $date[2];
+			$month = $date[0];
 
-		if ($year < $previousValue) {
-		    $html .= '<div class="year">'.$year.'</div>';
-		}
+			if ($year !== $previousValueY) {
+			    $html .= '<div class="year">'.$year.'</div>';
+			}
 
-		try {
-			$html .= '<li>';
-			$html .= '<a href="' . $page->permalink() . '">' . $page->title() . '</a>';
-			$html .= '</li>';
-			} catch (Exception $e) {
-			// Continue
-		}
+	   		if ($month !== $previousValueM) {
+			    $html .= '<div class="month">'.$month.'</div>';
+			}
 
-		$previousValue = $year;
+			try {
+				$html .= '<li>';
+				$html .= '<a href="' . $page->permalink() . '">' . $page->title() . '</a>';
+				$html .= '</li>';
+				} catch (Exception $e) {
+				// Continue
+			}
 
-		}
+			$previousValueY = $year;
+			$previousValueM = $month;
 
-		$html .= '</ul>';
- 		$html .= '</div>';
- 		$html .= '</div>';
+			}
 
-		return $html;
+			$html .= '</ul>';
+ 			$html .= '</div>';
+ 			$html .= '</div>';
+
+			return $html;
 	}
 }
