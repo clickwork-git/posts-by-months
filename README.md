@@ -1,5 +1,5 @@
-Posts by year and months
-========================
+Posts by months
+===============
 
 The plugin shows a list of posts ordered by years and month in the sidebar.
 
