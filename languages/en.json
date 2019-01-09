@@ -1,0 +1,10 @@
+{
+	"plugin-data":
+	{
+		"name": "Posts by months",
+		"description": "Navigation menu of posts ordered by years and months."
+	},
+	"home-link": "Home link",
+	"show-the-home-link-on-the-sidebar": "Show the home link on the sidebar.",
+	"amount-of-items": "Amount of items"
+}
