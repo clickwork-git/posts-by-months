@@ -85,9 +85,9 @@ class pluginPostsbymonths extends Plugin {
 		foreach ($publishedPages as $pageKey) {
 
 			$page = new Page($pageKey);
-			$date = explode(" ", $page->date());
-			$year = $date[2];
-			$month = $date[0];
+			$date = $page->date('Y,F');
+			$year = substr($date, 0, 4);
+			$month = substr($date, 5);
 
 			if ($year !== $previousValueY) {
 			    $html .= '<div class="year">'.$year.'</div>';
