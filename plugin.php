@@ -116,4 +116,5 @@ class pluginPostsbymonths extends Plugin {
 
 			return $html;
 	}
+
 }
